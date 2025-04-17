@@ -2,6 +2,7 @@ package it.epicode.EserciziGiornalieri_16_04_2.autore;
 
 
 import it.epicode.EserciziGiornalieri_16_04_2.common.CommonResponse;
+import jakarta.validation.Valid;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,7 +28,7 @@ public class AutoreController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CommonResponse save(@RequestBody AutoreInsertRequest request) {
+    public CommonResponse save(@RequestBody @Valid AutoreInsertRequest request) {
         return autoreService.save(request);
     }
 

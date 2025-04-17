@@ -3,13 +3,16 @@ package it.epicode.EserciziGiornalieri_16_04_2.blogPost;
 import it.epicode.EserciziGiornalieri_16_04_2.autore.Autore;
 import it.epicode.EserciziGiornalieri_16_04_2.autore.AutoreRepository;
 import it.epicode.EserciziGiornalieri_16_04_2.common.CommonResponse;
+import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 
 @Service
+@Validated
 public class BlogPostService {
     @Autowired
     private BlogPostRepository blogPostRepository;
@@ -17,7 +20,7 @@ public class BlogPostService {
     @Autowired
     private AutoreRepository autoreRepository;
 
-    public CommonResponse save(BlogPostInsertRequest request) {
+    public CommonResponse save(@Valid BlogPostInsertRequest request) {
         BlogPost blogPost = new BlogPost();
 
         BeanUtils.copyProperties(request, blogPost);

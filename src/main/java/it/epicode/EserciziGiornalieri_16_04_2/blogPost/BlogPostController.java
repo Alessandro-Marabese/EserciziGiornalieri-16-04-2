@@ -1,6 +1,7 @@
 package it.epicode.EserciziGiornalieri_16_04_2.blogPost;
 
 import it.epicode.EserciziGiornalieri_16_04_2.common.CommonResponse;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class BlogPostController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CommonResponse save(@RequestBody  BlogPostInsertRequest request) {
+    public CommonResponse save(@RequestBody @Valid BlogPostInsertRequest request) {
         return blogPostService.save(request);
     }
 

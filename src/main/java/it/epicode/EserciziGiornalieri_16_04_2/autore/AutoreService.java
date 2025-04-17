@@ -1,20 +1,23 @@
 package it.epicode.EserciziGiornalieri_16_04_2.autore;
 
 import it.epicode.EserciziGiornalieri_16_04_2.common.CommonResponse;
+import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 
 @Service
+@Validated
 public class AutoreService {
     @Autowired
     private AutoreRepository autoreRepository;
 
-    public CommonResponse save(AutoreInsertRequest request) {
+    public CommonResponse save(@Valid AutoreInsertRequest request) {
         Autore autore = new Autore();
         BeanUtils.copyProperties(request, autore);
         autoreRepository.save(autore);
